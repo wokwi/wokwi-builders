@@ -1,0 +1,18 @@
+FROM ubuntu:20.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+  && apt-get upgrade -y\
+  && apt-get -y install wget git \
+  && apt-get -y install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential python3.9 \
+  && useradd -ms /bin/bash pico
+
+USER pico
+WORKDIR /home/pico
+ENV PICO_SDK_PATH=/home/pico/pico-sdk
+RUN git clone -b 1.3.0 https://github.com/raspberrypi/pico-sdk.git && cd pico-sdk && git submodule update --init
+
+COPY --chown=pico:pico project project/
+WORKDIR /home/pico/project/build
+RUN cmake .. && make -j4
