@@ -11,7 +11,7 @@ RUN apt-get update \
 USER pico
 WORKDIR /home/pico
 ENV PICO_SDK_PATH=/home/pico/pico-sdk
-RUN git clone -b 1.3.0 https://github.com/raspberrypi/pico-sdk.git && cd pico-sdk && git submodule update --init
+RUN git clone -b 1.3.0 --depth 1 https://github.com/raspberrypi/pico-sdk.git && cd pico-sdk && git submodule update --init --depth 1
 
 COPY --chown=pico:pico project project/
 WORKDIR /home/pico/project/build
