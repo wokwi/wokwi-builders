@@ -5,8 +5,9 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 set(PICO_NO_UF2 1)
 pico_sdk_init()
+AUX_SOURCE_DIRECTORY(src SOURCE_FILES) 
 add_executable(wokwi_project
-  src/main.c
+  ${SOURCE_FILES}
 )
 pico_add_extra_outputs(wokwi_project)
 target_link_libraries(wokwi_project pico_stdlib)
