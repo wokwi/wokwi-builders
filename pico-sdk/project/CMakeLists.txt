@@ -3,6 +3,7 @@ include(pico_sdk_import.cmake)
 project(wokwi_project C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
+set(PICO_NO_UF2 1)
 pico_sdk_init()
 add_executable(wokwi_project
   src/main.c
