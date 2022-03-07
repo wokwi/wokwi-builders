@@ -13,7 +13,8 @@ USER rust
 WORKDIR /home/rust
 
 COPY install-rust-toolchain.sh .
-RUN ./install-rust-toolchain.sh --extra-crates "ldproxy cargo-generate" --clear-cache "YES" --export-file /home/rust/export-rust.sh
+RUN ./install-rust-toolchain.sh --extra-crates "ldproxy cargo-generate" --clear-cache "YES" --export-file /home/rust/export-rust.sh \
+  && rm -rf rust-1.59.0.0-aarch64-unknown-linux-gnu*
 
 COPY entrypoint.sh /opt/esp/entrypoint.sh
 COPY motd /etc/motd
@@ -34,9 +35,16 @@ RUN sed -i -e 's!esp-13.0.0-20211203-aarch64-unknown-linux-gnu/!esp-13.0.0-20211
 
 RUN pip3 install esptool --user
 
-# Compile esp-idf-hal examples
 RUN . /opt/esp/entrypoint.sh \
-  && cd rust-project \
-  && cargo +esp build --example ledc-simple --release --target xtensa-esp32-espidf
+  && rustup default nightly \
+  && rustup component add rust-src --toolchain nightly-aarch64-unknown-linux-gnu
 
 COPY compile.sh /home/rust
+# Compile esp-idf-hal examples
+RUN . /opt/esp/entrypoint.sh \
+ && cd rust-project \
+ && export WOKWI_MCU="esp32-c3" \
+ && /home/rust/compile.sh \
+ && export WOKWI_MCU="esp32" \
+ && /home/rust/compile.sh \
+ && rm /home/rust/rust-project/build-out/project.bin
