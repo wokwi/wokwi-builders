@@ -1,15 +1,20 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 RUN apt update \
-  && apt install -y --no-install-recommends git cmake ninja-build gperf \
+  && apt install -y --no-install-recommends git ninja-build gperf \
   ccache dfu-util device-tree-compiler wget \
   python3-dev python3-pip python3-setuptools python3-tk python3-wheel xz-utils file \
-  make gcc gcc-multilib g++-multilib libsdl2-dev \
+  make gcc gcc-multilib g++-multilib libsdl2-dev gnupg software-properties-common \
   && pip3 install wheel west
+
+RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add - \
+  && apt-add-repository 'deb https://apt.kitware.com/ubuntu/ focal main' \
+  && apt-get update \
+  && apt-get install -y cmake
 
 RUN adduser --disabled-password --gecos "" wokwi
 USER wokwi
