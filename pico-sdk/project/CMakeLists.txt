@@ -13,5 +13,8 @@ pico_add_extra_outputs(wokwi_project)
 target_link_libraries(
   wokwi_project
   pico_stdlib
+  hardware_adc
+  hardware_flash
+  hardware_i2c
   hardware_pwm
 )
