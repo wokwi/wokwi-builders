@@ -10,4 +10,8 @@ add_executable(wokwi_project
   ${SOURCE_FILES}
 )
 pico_add_extra_outputs(wokwi_project)
-target_link_libraries(wokwi_project pico_stdlib)
+target_link_libraries(
+  wokwi_project
+  pico_stdlib
+  hardware_pwm
+)
