@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. "$HOME/.cargo/env" 
+
 set -e
 
 case ${WOKWI_MCU} in
