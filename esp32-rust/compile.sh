@@ -1,6 +1,8 @@
 #!/bin/sh
 
-. "$HOME/.cargo/env" 
+. "$HOME/.cargo/env"
+. "$HOME/.espressif/frameworks/esp-idf-v4.4/export.sh"
+. "$HOME/export-rust.sh"
 
 set -e
 
@@ -38,6 +40,6 @@ mkdir -p build-out
 if [ -f build-in/main.rs ]; then
   cat build-in/main.rs > examples/ledc-simple.rs
 fi
-
+pip3 install esptool
 cargo ${TOOLCHAIN} build --example ledc-simple --release --target ${TARGET}
 python3 -m esptool --chip ${WOKWI_MCU} elf2image --flash_size 4MB target/${TARGET}/release/examples/ledc-simple -o build-out/project.bin
