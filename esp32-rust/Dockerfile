@@ -14,5 +14,5 @@ RUN cd rust-project \
     && export WOKWI_MCU="esp32-c3" \
     && bash /home/esp/compile.sh \
     && export WOKWI_MCU="esp32-s2" \
-    && bash /home/esp/compile.sh
+    && bash /home/esp/compile.sh \
     && rm /home/esp/rust-project/build-out/project.bin
