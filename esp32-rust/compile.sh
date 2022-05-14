@@ -1,7 +1,7 @@
 #!/bin/sh
 
 . "$HOME/.cargo/env"
-. "$HOME/.espressif/frameworks/esp-idf-v4.4/export.sh"
+. "$HOME/.espressif/frameworks/esp-idf/export.sh"
 . "$HOME/export-rust.sh"
 
 set -e

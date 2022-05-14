@@ -1,7 +1,7 @@
 FROM sergiogasquez/esp-rs-env:wokwi
 
 # Install esptool
-RUN IDF_PATH=/home/esp/.espressif/frameworks/esp-idf-v4.4 . "/home/esp/.espressif/frameworks/esp-idf-v4.4/export.sh" \
+RUN IDF_PATH=/home/esp/.espressif/frameworks/esp-idf . "/home/esp/.espressif/frameworks/esp-idf/export.sh" \
     && pip3 install esptool
 
 # Examples from esp-idf-hal
