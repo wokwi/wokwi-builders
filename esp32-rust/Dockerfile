@@ -9,7 +9,7 @@ RUN curl -L https://github.com/cargo-generate/cargo-generate/releases/download/v
     -C /home/esp/.cargo/bin/ \
     && rm /home/esp/.cargo/bin/cargo-generate.tar.gz
 RUN chmod u+x /home/esp/.cargo/bin/cargo-generate
-RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-idf-template cargo --name rust-project --define mcu=esp32 --define toolchain=esp --define espidfver=v4.4 --define std=true \
+RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-idf-template cargo --name rust-project --define mcu=esp32 --define toolchain=esp --define espidfver=v4.4 --define std=true --define devcontainer=false \
     && rm rust-project/Cargo.toml
 COPY Cargo.toml rust-project/Cargo.toml
 
