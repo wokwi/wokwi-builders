@@ -1,8 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 . /home/esp/export-esp.sh
-pip3 install esptool
 cd rust-project
 if [ -f ${HOME}/build-in/main.rs ]; then
     cat ${HOME}/build-in/main.rs > src/main.rs
