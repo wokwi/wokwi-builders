@@ -3,12 +3,6 @@ FROM espressif/idf-rust:esp32s2_v4.4_1.61.0.0
 # Install cargo-generate
 USER esp
 ENV USER=esp
-RUN curl -L https://github.com/cargo-generate/cargo-generate/releases/download/v0.14.0/cargo-generate-v0.14.0-x86_64-unknown-linux-gnu.tar.gz \
-    -o /home/esp/.cargo/bin/cargo-generate.tar.gz \
-    && tar xf /home/esp/.cargo/bin/cargo-generate.tar.gz \
-    -C /home/esp/.cargo/bin/ \
-    && rm /home/esp/.cargo/bin/cargo-generate.tar.gz
-RUN chmod u+x /home/esp/.cargo/bin/cargo-generate
 RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-idf-template cargo --name rust-project --define mcu=esp32s2 --define toolchain=esp --define espidfver=v4.4 --define std=true --define devcontainer=false \
     && rm rust-project/Cargo.toml
 COPY Cargo.toml rust-project/Cargo.toml
