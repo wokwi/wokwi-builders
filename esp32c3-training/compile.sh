@@ -1,9 +1,8 @@
 #!/bin/bash
 
 set -e
-. "$HOME/.cargo/env"
-export IDF_TOOLS_PATH=/home/esp/.espressif
-. /home/esp/.espressif/frameworks/esp-idf/export.sh
+. /home/esp/export-esp.sh
+
 cd espressif-trainings/intro/hardware-check
 if [ -f ${HOME}/build-in/main.rs ]; then
     cat ${HOME}/build-in/main.rs > src/main.rs
