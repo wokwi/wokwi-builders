@@ -45,8 +45,6 @@ RUN git clone -b fix/wifi-connection https://github.com/SergioGasquez/espressif-
 
 COPY Cargo.toml espressif-trainings/intro/hardware-check/Cargo.toml
 
-# TO BE REMOVED WHEN NEW RELEASE OF INSTALLER IS DONE
-RUN $HOME/.cargo/bin/cargo install cargo-espflash espmonitor ldproxy
 
 # Fetch
 COPY fetch.sh /home/esp/
