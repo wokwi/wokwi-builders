@@ -12,4 +12,4 @@ ADD --chown=wokwi project /home/wokwi/project
 ENV PATH=$PATH:/home/wokwi/.platformio/penv/bin
 WORKDIR /home/wokwi/project
 RUN pio run
-
+COPY compile.sh /home/wokwi/project
