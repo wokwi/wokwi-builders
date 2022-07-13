@@ -45,7 +45,6 @@ RUN git clone -b fix/wifi-connection https://github.com/SergioGasquez/espressif-
 
 COPY Cargo.toml espressif-trainings/intro/hardware-check/Cargo.toml
 
-
 # Fetch
 COPY fetch.sh /home/esp/
 RUN bash fetch.sh
