@@ -3,7 +3,7 @@ FROM espressif/idf-rust:esp32s2_v4.4_1.62.0.0
 # Install cargo-generate
 USER esp
 ENV USER=esp
-RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-idf-template cargo --name rust-project --define mcu=esp32s2 --define toolchain=esp --define espidfver=v4.4 --define std=true --define devcontainer=false \
+RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-idf-template cargo --name rust-project --define mcu=esp32s2 --define espidfver=v4.4 --define std=true --define devcontainer=false \
     && rm rust-project/Cargo.toml
 COPY Cargo.toml rust-project/Cargo.toml
 
