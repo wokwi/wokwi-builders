@@ -9,7 +9,7 @@ ARG CONTAINER_USER=esp
 ARG CONTAINER_GROUP=esp
 ARG NIGHTLY_TOOLCHAIN_VERSION=nightly-2022-03-10
 ARG XTENSA_TOOLCHAIN_VERSION=1.61.0.0
-ARG ESP_IDF_VERSION=release/v4.4
+ARG ESP_IDF_VERSION=v4.4.1
 ARG ESP_BOARD=esp32c3
 ARG INSTALL_RUST_TOOLCHAIN=install-rust-toolchain.sh
 # Install dependencies
@@ -29,7 +29,6 @@ ADD --chown=${CONTAINER_USER}:${CONTAINER_GROUP} \
 RUN chmod a+x ${INSTALL_RUST_TOOLCHAIN} \
     && ./${INSTALL_RUST_TOOLCHAIN} \
     --extra-crates "ldproxy" \
-    --clear-cache "YES" \
     --build-target "${ESP_BOARD}" \
     --nightly-version "${NIGHTLY_TOOLCHAIN_VERSION}" \
     --esp-idf-version "${ESP_IDF_VERSION}" \
@@ -39,7 +38,7 @@ RUN chmod a+x ${INSTALL_RUST_TOOLCHAIN} \
 # Activate ESP-IDF and Xtensa Rust toolchain environment
 RUN echo "source ${HOME}/export-esp.sh" >> ~/.bashrc
 
-RUN git clone -b fix/wifi-connection https://github.com/SergioGasquez/espressif-trainings.git espressif-trainings \
+RUN git clone https://github.com/ferrous-systems/espressif-trainings.git espressif-trainings \
     && rm -rf espressif-trainings/book \
     && rm espressif-trainings/intro/hardware-check/Cargo.toml
 
