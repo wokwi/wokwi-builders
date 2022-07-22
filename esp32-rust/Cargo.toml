@@ -2,7 +2,7 @@
 name = "rust-project"
 version = "0.1.0"
 authors = ["Sergio Gasquez <sergio.gasquez@gmail.com>"]
-edition = "2018"
+edition = "2021"
 resolver = "2"
 
 [profile.release]
