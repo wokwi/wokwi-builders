@@ -1,0 +1,21 @@
+idf_component_register(
+    INCLUDE_DIRS
+        "$ENV{GOLIOTH_SDK_PATH}/examples/common"
+    SRCS
+        "src/app_main.c"
+        "$ENV{GOLIOTH_SDK_PATH}/examples/common/shell.c"
+        "$ENV{GOLIOTH_SDK_PATH}/examples/common/wifi.c"
+        "$ENV{GOLIOTH_SDK_PATH}/examples/common/nvs.c"
+    PRIV_REQUIRES
+        "golioth_sdk"
+        "console"
+        "spi_flash"
+        "nvs_flash"
+        "json"
+        "driver"
+        "esp_hw_support"
+)
+list(APPEND EXTRA_C_FLAGS_LIST
+    -Werror
+)
+component_compile_options(${EXTRA_C_FLAGS_LIST})
