@@ -1,0 +1,34 @@
+[package]
+name = "rust-project"
+version = "0.1.0"
+authors = ["Sergio Gasquez <sergio.gasquez@gmail.com>"]
+edition = "2021"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true    # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[dependencies]
+esp32s2-hal = { package = "esp32s2-hal", git = "https://github.com/esp-rs/esp-hal.git", rev = "e9f22ac" }
+xtensa-lx-rt = { version = "0.13.0", features = ["esp32s2"], optional = true }
+esp-backtrace = { version = "0.1.0", features = [
+    "esp32s2",
+    "panic-handler",
+    "print-uart",
+] }
+ili9341 = { version = "0.5", git = "https://github.com/yuri91/ili9341-rs" }
+esp-println = { version = "0.3.0", features = ["esp32s2"] }
+embedded-graphics = "0.7.1"
+display-interface-spi = "0.4.1"
+embedded-graphics-core = "0.3.3"
+profont = "0.6.1"
+xtensa-atomic-emulation-trap = "0.2.0"
+
+
+[features]
+default = ["rt"]
+rt = ["xtensa-lx-rt"]
