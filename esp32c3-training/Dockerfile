@@ -51,4 +51,3 @@ RUN bash fetch.sh
 # Copy compilation script
 COPY compile.sh /home/esp/
 RUN mkdir -p /home/esp/build-in /home/esp/build-out
-
