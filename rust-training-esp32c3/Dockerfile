@@ -9,9 +9,10 @@ ARG CONTAINER_USER=esp
 ARG CONTAINER_GROUP=esp
 ARG NIGHTLY_TOOLCHAIN_VERSION=nightly-2022-03-10
 ARG XTENSA_TOOLCHAIN_VERSION=1.63.0.2
-ARG ESP_IDF_VERSION=v4.4.1
 ARG ESP_BOARD=esp32c3
 ARG INSTALL_RUST_TOOLCHAIN=install-rust-toolchain.sh
+# The following variable must also be present during container run time:
+ENV ESP_IDF_VERSION=v4.4.1
 # Install dependencies
 RUN apt-get update \
     && apt-get install -y git curl gcc clang ninja-build libudev-dev unzip xz-utils \
