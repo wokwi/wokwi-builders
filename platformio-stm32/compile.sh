@@ -8,7 +8,7 @@ REGEX='[:,]pnum=([a-zA-Z0-9_]+)'
 ENV=${BASH_REMATCH[1],,}
 
 export PLATFORMIO_DEFAULT_ENVS="$ENV"
-rm -rf "/home/wokwi/project/.pio/build/$ENV/firmware.*"
+rm -rf /home/wokwi/project/.pio/build/$ENV/firmware.*
 
 if [ "$WOKWI_DEBUG_BUILD" == "1" ]; then
   pio debug
