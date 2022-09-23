@@ -14,7 +14,7 @@ opt-level = "z"
 
 [dependencies]
 xtensa-atomic-emulation-trap = "0.2.0"
-esp32-hal = { package = "esp32-hal", git = "https://github.com/esp-rs/esp-hal.git", rev = "e9f22ac" }
+esp32-hal = { package = "esp32-hal", git = "https://github.com/esp-rs/esp-hal.git" }
 xtensa-lx-rt = { version = "0.13.0", features = ["esp32"], optional = true }
 esp-println = { version = "0.3.0", features = ["esp32"] }
 esp-backtrace = { version = "0.1.0", features = [
