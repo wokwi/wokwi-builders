@@ -5,7 +5,6 @@ set -e
 export CARGO_INCREMENTAL=0
 export RUSTC_WRAPPER=$(which sccache)
 
-export SCCACHE_REDIS=redis://[: <passwd >@] <hostname >[:port][/ <db >]
 cd rust-project
 mkdir -p output
 
