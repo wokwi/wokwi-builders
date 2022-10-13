@@ -44,7 +44,7 @@ RUN git clone https://github.com/ferrous-systems/espressif-trainings.git espress
     && rm espressif-trainings/intro/hardware-check/Cargo.toml
 
 COPY Cargo.toml espressif-trainings/intro/hardware-check/Cargo.toml
-
+COPY sdkconfig.defaults espressif-trainings/intro/hardware-check/sdkconfig.defaults
 # Fetch
 COPY fetch.sh /home/esp/
 RUN bash fetch.sh
