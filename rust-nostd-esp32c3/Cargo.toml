@@ -16,7 +16,7 @@ opt-level = "z"
 esp32c3-hal = { package = "esp32c3-hal", git = "https://github.com/esp-rs/esp-hal.git" }
 riscv-rt = { version = "0.9", optional = true }
 esp-println = { version = "0.3.0", features = ["esp32c3"] }
-esp-backtrace = { version = "0.1.0", features = [
+esp-backtrace = { git = "https://github.com/esp-rs/esp-backtrace", version = "0.3.0", features = [
     "esp32c3",
     "panic-handler",
     "print-uart",
