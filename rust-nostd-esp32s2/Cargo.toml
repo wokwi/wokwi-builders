@@ -34,7 +34,7 @@ tinybmp = "0.3.3"
 max7219 = "0.3.1"
 esp-alloc = { version = "0.1.0", features = ["oom-handler"] }
 esp-max7219-nostd = { version = "0.1.0", git = "https://github.com/playfulFence/esp-max7219-nostd" }
-
+keypad2 = "0.1.1"
 
 [features]
 default = [ "rt", "eh1" ]
