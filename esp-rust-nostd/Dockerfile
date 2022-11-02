@@ -1,4 +1,4 @@
-FROM espressif/idf-rust:all_v4.4_1.64.0.0
+FROM espressif/idf-rust:all_1.64.0.0
 
 USER esp
 ENV USER=esp
