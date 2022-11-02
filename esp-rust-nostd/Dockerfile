@@ -1,9 +1,8 @@
 FROM espressif/idf-rust:all_v4.4_1.64.0.0
-ARG REDIST_URL
 
 USER esp
 ENV USER=esp
-RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-idf-template cargo --name rust-project --define mcu=${WOKWI_MCU} --define espidfver=v4.4 --define std=true --define devcontainer=false
+RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-template --name rust-project  --vcs none --silent -d mcu=${WOKWI_MCU}  -d devcontainer=false -d alloc=false
 
 # Copy compilation script
 COPY compile.sh /home/esp/
@@ -16,4 +15,3 @@ RUN bash fetch.sh
 # Install sccacahe
 RUN cargo install sccache
 ENV SCCACHE_REDIS=${REDIST_URL}
-
