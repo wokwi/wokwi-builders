@@ -9,7 +9,7 @@ cd rust-project
 mkdir -p output
 
 if [ -f ${HOME}/build-in/main.rs ]; then
-    cat ${HOME}/build-in/main.rs >src/main.rs
+    cat ${HOME}/build-in/*.rs >src/*.rs
 fi
 
 if [ -f ${HOME}/build-in/Cargo.toml ]; then
