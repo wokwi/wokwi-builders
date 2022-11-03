@@ -12,8 +12,8 @@ if [ -f ${HOME}/build-in/main.rs ]; then
     cat ${HOME}/build-in/main.rs >src/main.rs
 fi
 
-if [ -f ${HOME}/build-in/Cargo.rs ]; then
-    cat ${HOME}/build-in/Cargo.rs >Cargo.toml
+if [ -f ${HOME}/build-in/Cargo.toml ]; then
+    cat ${HOME}/build-in/Cargo.toml >Cargo.toml
 fi
 
 cargo build --release --out-dir output -Z unstable-options
