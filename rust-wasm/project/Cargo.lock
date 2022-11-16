@@ -5,3 +5,12 @@ version = 3
 [[package]]
 name = "chip-rust"
 version = "0.1.0"
+dependencies = [
+ "wokwi_chip_ll",
+]
+
+[[package]]
+name = "wokwi_chip_ll"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cbbb855337d48c910a3002532c81254f3d2c835718ee35331bcd3c51146cb1c7"

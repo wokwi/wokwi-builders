@@ -7,6 +7,7 @@ RUN chown nobody /project/src/lib.rs && chmod o+w /project
 
 WORKDIR /project
 USER nobody
+ENV HOME=/tmp
 RUN cargo build --target wasm32-unknown-unknown --release
 
 # Wokwi builder configuration:
