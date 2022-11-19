@@ -1,5 +1,3 @@
-const std = @import("std");
-
 pub const LOW: u32 = 0;
 pub const HIGH: u32 = 1;
 pub const INPUT: u32 = 0;

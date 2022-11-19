@@ -11,7 +11,7 @@ RUN wget -q https://github.com/marler8997/zigup/releases/download/v2022_08_25/zi
 RUN chown wokwi -R /project/src/ && chmod o+w /project
 
 WORKDIR /project
-USER wokwi
+
 RUN zig build -Drelease-small
 
 # Wokwi builder configuration:
