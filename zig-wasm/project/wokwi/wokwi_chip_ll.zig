@@ -62,8 +62,11 @@ pub const NO_PIN: PinId = -1;
 /// # Safety
 ///
 /// Just a stub to specify the Chip API version.
-pub extern fn __wokwi_api_version_1() u32;
+pub export fn __wokwi_api_version_1() u32 {
+    return 1;
+}
 pub extern fn pinInit(name: [*:0]const u8, mode: u32) PinId;
+pub extern fn pinMode(pin: PinId, mode: u32) callconv(.C) void;
 pub extern fn pinRead(pin: PinId) u32;
 pub extern fn pinWrite(pin: PinId, value: u32) callconv(.C) void;
 pub extern fn pinWatch(pin: PinId, watch_config: ?*WatchConfig) bool;
