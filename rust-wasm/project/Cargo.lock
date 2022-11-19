@@ -11,6 +11,6 @@ dependencies = [
 
 [[package]]
 name = "wokwi_chip_ll"
-version = "0.1.0"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cbbb855337d48c910a3002532c81254f3d2c835718ee35331bcd3c51146cb1c7"
+checksum = "9ce61b94e241449ad14dded340468f460db3bd5cff4be094affd6a4ab0b22338"
