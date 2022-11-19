@@ -9,5 +9,6 @@ pub fn build(b: *std.build.Builder) void {
     lib.setTarget(target);
     lib.setBuildMode(mode);
     lib.addPackagePath("wokwi", "wokwi/wokwi_chip_ll.zig");
+    lib.export_symbol_names = &[_][]const u8{"table"};
     lib.install();
 }
