@@ -8,5 +8,6 @@ pub fn build(b: *std.build.Builder) void {
     const lib = b.addSharedLibrary("chip_zig", "src/lib.zig", .unversioned);
     lib.setTarget(target);
     lib.setBuildMode(mode);
+    lib.addPackagePath("wokwi", "wokwi/wokwi_chip_ii.zig");
     lib.install();
 }

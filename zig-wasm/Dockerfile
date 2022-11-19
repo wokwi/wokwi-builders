@@ -8,7 +8,7 @@ RUN wget -q https://github.com/marler8997/zigup/releases/download/v2022_08_25/zi
     chmod +x /usr/bin/zigup && \
     zigup 0.10.0
 
-RUN chown wokwi -R /project/src/ && chmod o+w /project
+RUN chown wokwi /project/src/lib.zig && chmod o+w /project
 
 WORKDIR /project
 

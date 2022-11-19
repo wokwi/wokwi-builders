@@ -1,5 +1,5 @@
 const std = @import("std");
-const wokwi = @import("wokwi_chip_ii.zig");
+const wokwi = @import("wokwi");
 
 const Chip = extern struct {
     pin_in: wokwi.PinId,
