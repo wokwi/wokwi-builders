@@ -13,4 +13,4 @@ USER nobody
 COPY --chown=nobody:nobody test.c /src/test.c
 WORKDIR /src
 USER root
-RUN $CC --target=wasm32-wasi -o /tmp/app.wasm /src/test.c && file /tmp/app.wasm
+RUN $CC --target wasm32-wasi -o /tmp/app.wasm /src/test.c && file /tmp/app.wasm
