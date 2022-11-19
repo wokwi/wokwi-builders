@@ -6,7 +6,7 @@ ENV CC="zig cc -fno-sanitize=all -lc $@"
 RUN wget -q https://github.com/marler8997/zigup/releases/download/v2022_08_25/zigup.ubuntu-latest-x86_64.zip && \
     unzip zigup.ubuntu-latest-x86_64.zip -d /usr/bin && \
     chmod +x /usr/bin/zigup && \
-    zigup 0.10.0 && echo -e "$(zig cc --version)"
+    zigup 0.10.0
 
 RUN mkdir /src && chown nobody /src
 USER nobody
