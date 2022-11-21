@@ -17,5 +17,6 @@ target_link_libraries(
   hardware_flash
   hardware_i2c
   hardware_interp
+  hardware_pio
   hardware_pwm
 )
