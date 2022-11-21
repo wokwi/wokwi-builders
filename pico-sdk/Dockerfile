@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -11,7 +11,7 @@ RUN apt-get update \
 USER pico
 WORKDIR /home/pico
 ENV PICO_SDK_PATH=/home/pico/pico-sdk
-RUN git clone -b 1.3.0 --depth 1 https://github.com/raspberrypi/pico-sdk.git && cd pico-sdk && git submodule update --init --depth 1
+RUN git clone -b 1.4.0 --depth 1 https://github.com/raspberrypi/pico-sdk.git && cd pico-sdk && git submodule update --init --depth 1
 
 COPY --chown=pico:pico project project/
 WORKDIR /home/pico/project/build
