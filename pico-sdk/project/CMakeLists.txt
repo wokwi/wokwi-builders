@@ -14,6 +14,7 @@ target_link_libraries(
   wokwi_project
   pico_stdlib
   hardware_adc
+  hardware_clocks
   hardware_flash
   hardware_i2c
   hardware_interp
