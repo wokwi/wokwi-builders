@@ -4,7 +4,7 @@ USER esp
 ENV USER=esp
 
 # Install sccacahe
-RUN cargo install sccache
+RUN cargo install sccache cargo-audit
 
 # Generate project templates
 RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-template --name rust-project-esp32 --vcs none --silent -d mcu=esp32 -d devcontainer=false -d alloc=true
