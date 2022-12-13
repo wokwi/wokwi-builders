@@ -63,7 +63,6 @@ extern "C" void chip_init(void) {
   chip->design = new cxxrtl_design::p_wokwi();
   chip->first_pin = NULL;
 
-  setvbuf(stdout, NULL, _IOLBF, 1024); // Limit output buffering to a single line
   printf("Verilog chip started\n");
 
   cxxrtl::debug_items items;
