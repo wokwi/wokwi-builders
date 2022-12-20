@@ -1,4 +1,4 @@
-FROM espressif/idf-rust:esp32s2_v4.4_1.63.0.2
+FROM espressif/idf-rust:esp32s2_v4.4_latest
 
 # Install cargo-generate
 USER esp
