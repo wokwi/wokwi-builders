@@ -3,7 +3,7 @@ FROM espressif/idf-rust:all_latest
 USER esp
 ENV USER=esp
 
-# Install sccacahe
+# Install cargo-audit
 RUN cargo install cargo-audit
 
 # Generate project templates
