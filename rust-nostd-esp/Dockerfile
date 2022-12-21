@@ -1,16 +1,16 @@
-FROM espressif/idf-rust:all_1.64.0.0
+FROM espressif/idf-rust:all_1.66.0.0
 
 USER esp
 ENV USER=esp
 
-# Install sccacahe
-RUN cargo install sccache
+# Install cargo-audit
+RUN cargo install cargo-audit
 
 # Generate project templates
-RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-template --name rust-project-esp32 --vcs none --silent -d mcu=esp32 -d devcontainer=false -d alloc=true
-RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-template --name rust-project-esp32s2 --vcs none --silent -d mcu=esp32s2 -d devcontainer=false -d alloc=true
-RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-template --name rust-project-esp32s3 --vcs none --silent -d mcu=esp32s3 -d devcontainer=false -d alloc=true
-RUN cargo generate --vcs none --git https://github.com/esp-rs/esp-template --name rust-project-esp32c3 --vcs none --silent -d mcu=esp32c3 -d devcontainer=false -d alloc=true
+RUN cargo generate --git https://github.com/esp-rs/esp-template --name rust-project-esp32 --vcs none --silent -d mcu=esp32 -d devcontainer=false -d alloc=true
+RUN cargo generate --git https://github.com/esp-rs/esp-template --name rust-project-esp32s2 --vcs none --silent -d mcu=esp32s2 -d devcontainer=false -d alloc=true
+RUN cargo generate --git https://github.com/esp-rs/esp-template --name rust-project-esp32s3 --vcs none --silent -d mcu=esp32s3 -d devcontainer=false -d alloc=true
+RUN cargo generate --git https://github.com/esp-rs/esp-template --name rust-project-esp32c3 --vcs none --silent -d mcu=esp32c3 -d devcontainer=false -d alloc=true
 
 # Copy utility scripts and setup
 COPY compile.sh fetch.sh /home/esp/
