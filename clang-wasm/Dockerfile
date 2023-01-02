@@ -14,4 +14,9 @@ RUN mkdir /src && chown nobody /src
 USER nobody
 COPY --chown=nobody:nobody test.c /src/test.c
 WORKDIR /src
-RUN clang --target=wasm32-unknown-wasi --sysroot /opt/wasi-libc -nostartfiles -Wl,--import-memory -Wl,--no-entry -Wl,--export-all -o /tmp/app.wasm /src/test.c
+RUN clang --target=wasm32-unknown-wasi --sysroot /opt/wasi-libc -nostartfiles -Wl,--no-entry -Wl,--export-all -o /tmp/app.wasm /src/test.c
+
+ENV HEXI_SRC_DIR="/src"
+ENV HEXI_BUILD_CMD="clang --target=wasm32-unknown-wasi --sysroot /opt/wasi-libc -nostartfiles -Wl,--export-table -Wl,--no-entry -Werror -o /tmp/app.wasm /src/app.c"
+ENV HEXI_OUT_HEX="/tmp/app.wasm"
+ENV HEXI_OUT_ELF="/tmp/app.elf"
