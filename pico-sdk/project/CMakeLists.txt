@@ -15,6 +15,7 @@ target_link_libraries(
   pico_stdlib
   hardware_adc
   hardware_clocks
+  hardware_dma
   hardware_flash
   hardware_i2c
   hardware_interp
