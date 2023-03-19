@@ -12,6 +12,7 @@ add_executable(wokwi_project
 pico_add_extra_outputs(wokwi_project)
 target_link_libraries(
   wokwi_project
+  pico_multicore
   pico_stdlib
   hardware_adc
   hardware_clocks
