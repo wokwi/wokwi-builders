@@ -20,3 +20,8 @@ RUN bash fetch.sh
 # Copy compilation script
 COPY compile.sh /root/
 RUN mkdir -p /root/build-in /root/build-out
+
+ENV HEXI_SRC_DIR="/home/esp/build-in"
+ENV HEXI_BUILD_CMD="bash /home/esp/compile.sh"
+ENV HEXI_OUT_HEX="/home/esp/build-out/project.bin"
+ENV HEXI_OUT_ELF="/home/esp/build-out/project.elf"
