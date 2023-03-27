@@ -26,6 +26,8 @@ esac
 
 cd ${PROJECT_NAME}
 mkdir -p output
+PROJECT_ROOT="${HOME}/${PROJECT_NAME}"
+PROJECT_NAME_UNDERSCORE=${PROJECT_NAME//-/_}
 
 if [ "$(find ${HOME}/build-in -name '*.rs')" ]; then
     cp ${HOME}/build-in/*.rs src
@@ -33,10 +35,9 @@ fi
 
 if [ -f ${HOME}/build-in/Cargo.toml ]; then
     cp ${HOME}/build-in/Cargo.toml Cargo.toml
+    sed -i 's/^name = ".*"/name = "'${PROJECT_NAME_UNDERSCORE}'"/' Cargo.toml
 fi
 
-PROJECT_ROOT="${HOME}/${PROJECT_NAME}"
-PROJECT_NAME_UNDERSCORE=${PROJECT_NAME//-/_}
 cargo audit
 cargo build --release --out-dir output -Z unstable-options
 python3 -m esptool --chip ${WOKWI_MCU} elf2image --flash_size 4MB ${PROJECT_ROOT}/output/${PROJECT_NAME_UNDERSCORE} -o ${HOME}/build-out/project.bin
