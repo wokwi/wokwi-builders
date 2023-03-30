@@ -24,3 +24,15 @@ target_link_libraries(
   hardware_pwm
   hardware_spi
 )
+
+if (PICO_CYW43_SUPPORTED) # set by PICO_BOARD=pico_w
+  target_include_directories(wokwi_project PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
+  )
+
+  target_link_libraries(wokwi_project
+    pico_cyw43_arch_lwip_threadsafe_background
+    pico_stdlib
+  )
+endif()
