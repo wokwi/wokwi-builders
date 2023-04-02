@@ -4,7 +4,7 @@ USER esp
 ENV USER=esp
 
 # Install cargo-audit
-RUN cargo install cargo-audit cargo-generate
+RUN cargo install cargo-audit cargo-generate sccache
 
 # Install cargo-fmt (the template needs it)
 RUN rustup component add rustfmt
