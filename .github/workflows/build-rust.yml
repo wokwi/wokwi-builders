@@ -16,6 +16,7 @@ jobs:
           - rust-std-esp32
           - rust-std-esp32c3
           - rust-std-esp32s2
+          - rust-std-esp32s3
           - rust-training-esp32c3
     steps:
       - uses: actions/checkout@v3
