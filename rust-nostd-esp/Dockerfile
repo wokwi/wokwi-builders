@@ -16,8 +16,9 @@ RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32s3 --vcs none
 RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32c3 --vcs none --silent -d mcu=esp32c3 -d devcontainer=false -d wokwi=false -d alloc=true
 
 # Copy utility scripts and setup
-COPY compile.sh fetch.sh /home/esp/
-RUN bash fetch.sh && mkdir -p /home/esp/build-in /home/esp/build-out
+COPY compile.sh /home/esp/
+RUN mkdir -p /home/esp/build-in /home/esp/build-out
+RUN pip3 install esptool
 
 # Prebuild the template project for all targets
 RUN WOKWI_MCU=esp32 ./compile.sh
