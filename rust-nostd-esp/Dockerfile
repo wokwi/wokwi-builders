@@ -3,7 +3,7 @@ FROM espressif/idf-rust:all_1.68.0.0
 USER esp
 ENV USER=esp
 
-# Install cargo-audit
+# Install extra crates
 RUN cargo install cargo-audit cargo-generate sccache
 
 # Install cargo-fmt (the template needs it)
