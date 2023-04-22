@@ -14,6 +14,7 @@ RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-
 
 # Copy utility scripts and setup
 COPY compile.sh /home/esp/
+ADD assets /home/esp/assets
 RUN mkdir -p /home/esp/build-in /home/esp/build-out
 RUN pip3 install esptool
 
