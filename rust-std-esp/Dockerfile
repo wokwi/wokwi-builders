@@ -6,17 +6,15 @@ ENV USER=esp
 # Install extra crates
 RUN cargo install cargo-audit cargo-generate sccache
 
-# Install cargo-fmt (the template needs it)
-RUN rustup component add rustfmt
-
 # Generate project templates
-RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32 --vcs none --silent -d mcu=esp32 -d devcontainer=false -d wokwi=false -d alloc=true
-RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32s2 --vcs none --silent -d mcu=esp32s2 -d devcontainer=false -d wokwi=false -d alloc=true
-RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32s3 --vcs none --silent -d mcu=esp32s3 -d devcontainer=false -d wokwi=false -d alloc=true
-RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32c3 --vcs none --silent -d mcu=esp32c3 -d devcontainer=false -d wokwi=false -d alloc=true
+RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32 -d mcu=esp32 -d defaults=true
+RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32s2 -d mcu=esp32s2 -d defaults=true
+RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32s3 -d mcu=esp32s3 -d defaults=true
+RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32c3 -d mcu=esp32c3 -d defaults=true
 
 # Copy utility scripts and setup
 COPY compile.sh /home/esp/
+ADD assets /home/esp/assets
 RUN mkdir -p /home/esp/build-in /home/esp/build-out
 RUN pip3 install esptool
 
