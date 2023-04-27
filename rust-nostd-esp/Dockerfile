@@ -15,6 +15,9 @@ RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32s2 --vcs none
 RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32s3 --vcs none --silent -d mcu=esp32s3 -d defaults=true
 RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32c3 --vcs none --silent -d mcu=esp32c3 -d defaults=true
 
+# Add alloc to the build-std property
+RUN find . -name "config.toml" -type f -exec sed -i 's/build-std = \["core"\]/build-std = \["alloc", "core"\]/g' {} +
+
 # Copy utility scripts and setup
 COPY compile.sh /home/esp/
 RUN mkdir -p /home/esp/build-in /home/esp/build-out
