@@ -58,8 +58,3 @@ ENV HEXI_SRC_DIR="/home/wokwi/build-in"
 ENV HEXI_BUILD_CMD="bash /home/wokwi/compile.sh"
 ENV HEXI_OUT_HEX="/home/wokwi/build-out/project.hex"
 ENV HEXI_OUT_ELF="/home/wokwi/build-out/project.elf"
-
-EXPOSE 8080
-ENV HEXI_LOGGER="stdout"
-COPY --from=wokwi/mini-hexi /wokwi-hexi /wokwi-hexi
-CMD /wokwi-hexi

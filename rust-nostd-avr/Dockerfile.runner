@@ -1,5 +1,0 @@
-FROM avr-build
-EXPOSE 8080
-ENV HEXI_LOGGER="stdout"
-COPY --from=wokwi/mini-hexi /wokwi-hexi /wokwi-hexi
-CMD /wokwi-hexi
