@@ -12,11 +12,9 @@ jobs:
       fail-fast: false
       matrix:
         builder_name:
+          - rust-nostd-avr
           - rust-nostd-esp
-          - rust-std-esp32
-          - rust-std-esp32c3
-          - rust-std-esp32s2
-          - rust-std-esp32s3
+          - rust-std-esp
           - rust-training-esp32c3
     steps:
       - uses: actions/checkout@v3
