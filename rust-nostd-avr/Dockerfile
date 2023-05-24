@@ -1,14 +1,14 @@
 # it pulles latest nightly a base image, but because of LLVM bug installes a specifc nightly in the generate step
 # -> if resolved can used latest / new stable
 # https://github.com/rust-lang/compiler-builtins/issues/523
-# we could directly pull that special nightly version but the following problem: 
+# we could directly pull that special nightly version but the following problem:
 # offical rust container dont have taged container :/
 # So two options.
 # 1) Use offical nightly rust-lang container and let it install the needed nightly version
 # 2) Use instrumentist container - would shrink the image a bit?
-# 
+#
 # I think it would be save to use instrumentist container as they are just retagged versions
-# can check here -> 
+# can check here ->
 # https://github.com/rust-lang/docker-rust-nightly/issues/3
 # https://github.com/instrumentisto/rust-docker-image/blob/5a7de506e39bd8ce6ccda3d55830d333d764b874/nightly/buster/hooks/post_push#L26-L27
 # but i opted for the normal latest nightly container currently
@@ -30,7 +30,7 @@ RUN rustup show
 
 # Install extra crates
 # it would be nice if we could get cargo-audit and sccache in some binary form :D this build step take's ages
-RUN cargo install cargo-audit cargo-generate sccache
+RUN cargo install cargo-audit cargo-generate sccache --locked
 
 # Generate project templates
 RUN cargo generate -a Rahix/avr-hal-template --name rust-project-uno --vcs none --silent -d board="Arduino Uno"
@@ -38,10 +38,10 @@ RUN cargo generate -a Rahix/avr-hal-template --name rust-project-uno --vcs none 
 # we would need some env var like WOKWI_BOARD that gives us info what board is used
 # the different in the projects is that the nano supports two additional pins in its layout
 # we can use the above generated project as a base - but need to change Cargo.toml to use
-# 
+#
 # [dependencies.arduino-hal]
 # features = ["arduino-nano"]
-# 
+#
 # this will unforunatly mean a user that opens a project with a nano will trigger a rebuild because the Cargo.toml changed
 #RUN cargo generate -a Rahix/avr-hal-template --name rust-project-nano --vcs none --silent -d board="Arduino Nano"
 RUN cargo generate -a Rahix/avr-hal-template --name rust-project-mega --vcs none --silent -d board="Arduino Mega 2560"
