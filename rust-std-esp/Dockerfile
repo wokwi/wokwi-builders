@@ -4,7 +4,7 @@ USER esp
 ENV USER=esp
 
 # Install extra crates
-RUN cargo install cargo-audit cargo-generate sccache
+RUN cargo install cargo-audit cargo-generate sccache --locked
 
 # Generate project templates
 RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32 -d mcu=esp32 -d defaults=true
