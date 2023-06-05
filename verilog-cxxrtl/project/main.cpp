@@ -34,6 +34,9 @@ static void update_input_pin(cxxrtl::debug_item verilog_pin, wokwi::pin_t wokwi_
 }
 
 static void update_output_pin(cxxrtl::debug_item verilog_pin, wokwi::pin_t wokwi_pin) {
+  if(verilog_pin.type == CXXRTL_OUTLINE) {
+     verilog_pin.outline->eval();
+  }
   if (verilog_pin.width == 1) {
     wokwi::pin_write(wokwi_pin, verilog_pin.curr[0] ? wokwi::HIGH : wokwi::LOW);
   } else {
@@ -47,7 +50,7 @@ static void inline update_output_pins(chip_state_t *chip) {
   for (auto pin = chip->first_pin; pin; pin = pin->next) {
     auto verilog_pin = pin->verilog_pin;
     wokwi::pin_t wokwi_pin = pin->wokwi_pin;
-    if ((verilog_pin.flags & cxxrtl::debug_item::OUTPUT) || verilog_pin.type == CXXRTL_ALIAS) {
+    if ((verilog_pin.flags & cxxrtl::debug_item::OUTPUT) || verilog_pin.type == CXXRTL_ALIAS || verilog_pin.type == CXXRTL_OUTLINE) {
       update_output_pin(verilog_pin, wokwi_pin);
     }
   }
@@ -98,7 +101,7 @@ extern "C" void chip_init(void) {
         uint32_t value = wokwi::pin_read(pin->wokwi_pin);
         update_input_pin(part, pin->wokwi_pin, 0, value);
         wokwi::pin_watch(pin->wokwi_pin, &config);
-      } else if ((part.flags & cxxrtl::debug_item::OUTPUT) || part.type == CXXRTL_ALIAS) {
+      } else if ((part.flags & cxxrtl::debug_item::OUTPUT) || part.type == CXXRTL_ALIAS || part.type == CXXRTL_OUTLINE) {
         chip_pin_t *pin = create_pin(chip);
         pin->wokwi_pin = wokwi::pin_init(name, wokwi::OUTPUT);
         pin->verilog_pin = part;
