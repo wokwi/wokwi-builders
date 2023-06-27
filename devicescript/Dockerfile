@@ -4,6 +4,7 @@ RUN adduser -h /app -D wokwi
 
 RUN npm i -g @devicescript/cli@latest
 
+USER wokwi
 WORKDIR /app
 RUN devs init
 RUN devs bundle --board esp32c3_bare src/main.ts
