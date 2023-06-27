@@ -10,10 +10,10 @@ RUN cargo install cargo-audit cargo-generate sccache  --locked
 RUN rustup component add rustfmt
 
 # Generate project templates
-RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32 --vcs none --silent -d mcu=esp32 -d defaults=true
-RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32s2 --vcs none --silent -d mcu=esp32s2 -d defaults=true
-RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32s3 --vcs none --silent -d mcu=esp32s3 -d defaults=true
-RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32c3 --vcs none --silent -d mcu=esp32c3 -d defaults=true
+RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32 --vcs none --silent -d mcu=esp32 -d advanced=false
+RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32s2 --vcs none --silent -d mcu=esp32s2 -d advanced=false
+RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32s3 --vcs none --silent -d mcu=esp32s3 -d advanced=false
+RUN cargo generate -a esp-rs/esp-template --name rust-project-esp32c3 --vcs none --silent -d mcu=esp32c3 -d advanced=false
 
 # Add alloc to the build-std property
 RUN find . -name "config.toml" -type f -exec sed -i 's/build-std = \["core"\]/build-std = \["alloc", "core"\]/g' {} +
