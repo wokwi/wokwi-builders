@@ -1,6 +1,6 @@
-FROM node:18
+FROM node:18-alpine
 
-RUN useradd -b /app wokwi
+RUN adduser -h /app -D wokwi
 
 RUN npm i -g @devicescript/cli@latest
 
