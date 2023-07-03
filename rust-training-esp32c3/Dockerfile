@@ -23,6 +23,7 @@ COPY compile.sh /home/esp/
 RUN mkdir -p /home/esp/build-in /home/esp/build-out
 
 ENV HEXI_SRC_DIR="/home/esp/build-in"
+ENV HEXI_SRC_FILES="*.rs"
 ENV HEXI_BUILD_CMD="bash /home/esp/compile.sh"
 ENV HEXI_OUT_HEX="/home/esp/build-out/project.bin"
 ENV HEXI_OUT_ELF="/home/esp/build-out/project.elf"

@@ -55,6 +55,7 @@ RUN WOKWI_MCU=atmega328p ./compile.sh
 RUN WOKWI_MCU=atmega2560 ./compile.sh
 
 ENV HEXI_SRC_DIR="/home/wokwi/build-in"
+ENV HEXI_SRC_FILES="*(*.rs|Cargo.toml)"
 ENV HEXI_BUILD_CMD="bash /home/wokwi/compile.sh"
 ENV HEXI_OUT_HEX="/home/wokwi/build-out/project.hex"
 ENV HEXI_OUT_ELF="/home/wokwi/build-out/project.elf"
