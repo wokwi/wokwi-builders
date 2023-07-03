@@ -10,11 +10,11 @@ RUN devs init
 
 ADD compile.sh /app
 
+RUN devs bundle --board esp32_devkit_c src/main.ts
 RUN devs bundle --board esp32c3_bare src/main.ts
 RUN devs bundle --board pico src/main.ts
 
 # TODO: support other boards, e.g.:
-#RUN devs bundle --board esp32_devkit_c src/main.ts
 #RUN devs bundle --board esp32s2_bare src/main.ts
 #RUN devs bundle --board esp32c3_rust_devkit src/main.ts
 #RUN devs bundle --board esp32s3_devkit_m src/main.ts
