@@ -1,5 +1,9 @@
 FROM espressif/idf-rust:all_1.69.0.0
 
+USER root
+RUN apt-get update
+RUN apt-get install -y procps
+
 USER esp
 ENV USER=esp
 

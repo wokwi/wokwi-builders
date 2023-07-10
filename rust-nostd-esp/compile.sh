@@ -1,5 +1,7 @@
 #!/bin/bash
 
+uptime
+
 set -e
 . /home/esp/export-esp.sh
 export CARGO_INCREMENTAL=0
