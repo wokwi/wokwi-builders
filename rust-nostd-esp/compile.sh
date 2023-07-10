@@ -40,5 +40,6 @@ fi
 
 cargo audit
 cargo build --release --out-dir output -Z unstable-options --verbose
+sccache --show-stats
 python3 -m esptool --chip ${WOKWI_MCU} elf2image --flash_size 4MB ${PROJECT_ROOT}/output/${PROJECT_NAME_UNDERSCORE} -o ${HOME}/build-out/project.bin
 cp output/${PROJECT_NAME_UNDERSCORE} ${HOME}/build-out/project.elf
