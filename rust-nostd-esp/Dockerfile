@@ -8,7 +8,7 @@ USER esp
 ENV USER=esp
 
 # Install extra crates
-RUN cargo install cargo-audit cargo-generate sccache  --locked
+RUN cargo install cargo-audit cargo-generate --locked
 
 # Install cargo-fmt (the template needs it)
 RUN rustup component add rustfmt
@@ -27,11 +27,12 @@ COPY compile.sh /home/esp/
 RUN mkdir -p /home/esp/build-in /home/esp/build-out
 RUN pip3 install esptool
 
-# Prebuild the template project for all targets
-RUN WOKWI_MCU=esp32 ./compile.sh
-RUN WOKWI_MCU=esp32-c3 ./compile.sh
-RUN WOKWI_MCU=esp32-s2 ./compile.sh
-RUN WOKWI_MCU=esp32-s3 ./compile.sh
+# Prebuild the template project for all targets, to test the container. 
+# We remove the target directory to reduce the image size.
+RUN WOKWI_MCU=esp32 ./compile.sh && rm -rf rust-project-esp32/target
+RUN WOKWI_MCU=esp32-c3 ./compile.sh && rm -rf rust-project-esp32c3/target
+RUN WOKWI_MCU=esp32-s2 ./compile.sh && rm -rf rust-project-esp32s2/target
+RUN WOKWI_MCU=esp32-s3 ./compile.sh && rm -rf rust-project-esp32s3/target
 
 ENV HOME="/home/esp"
 ENV HEXI_SRC_DIR="/home/esp/build-in"
