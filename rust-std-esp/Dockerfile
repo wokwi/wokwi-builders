@@ -1,10 +1,10 @@
-FROM espressif/idf-rust:all_1.68.0.0
+FROM espressif/idf-rust:all_1.69.0.0
 
 USER esp
 ENV USER=esp
 
 # Install extra crates
-RUN cargo install cargo-audit cargo-generate sccache --locked
+RUN cargo install cargo-audit cargo-generate --locked
 
 # Generate project templates
 RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32 -d mcu=esp32 -d advanced=false
@@ -18,11 +18,11 @@ ADD assets /home/esp/assets
 RUN mkdir -p /home/esp/build-in /home/esp/build-out
 RUN pip3 install esptool
 
-# Prebuild the template project for all targets
-RUN WOKWI_MCU=esp32 ./compile.sh
-RUN WOKWI_MCU=esp32-c3 ./compile.sh
-RUN WOKWI_MCU=esp32-s2 ./compile.sh
-RUN WOKWI_MCU=esp32-s3 ./compile.sh
+# Prebuild the template project for all targets - currently disabled to reduce the image size.
+#RUN WOKWI_MCU=esp32 ./compile.sh
+#RUN WOKWI_MCU=esp32-c3 ./compile.sh
+#RUN WOKWI_MCU=esp32-s2 ./compile.sh
+#RUN WOKWI_MCU=esp32-s3 ./compile.sh
 
 ENV HOME="/home/esp"
 ENV HEXI_SRC_DIR="/home/esp/build-in"
