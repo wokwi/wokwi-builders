@@ -1,4 +1,4 @@
-FROM espressif/idf-rust:all_1.69.0.0
+FROM espressif/idf-rust:all_1.71.0.1
 
 USER esp
 ENV USER=esp
@@ -19,10 +19,11 @@ RUN mkdir -p /home/esp/build-in /home/esp/build-out
 RUN pip3 install esptool
 
 # Prebuild the template project for all targets - currently disabled to reduce the image size.
-#RUN WOKWI_MCU=esp32 ./compile.sh
-#RUN WOKWI_MCU=esp32-c3 ./compile.sh
-#RUN WOKWI_MCU=esp32-s2 ./compile.sh
-#RUN WOKWI_MCU=esp32-s3 ./compile.sh
+# We remove the target directory to reduce the image size.
+# RUN WOKWI_MCU=esp32 ./compile.sh && rm -rf rust-project-esp32/target
+# RUN WOKWI_MCU=esp32-c3 ./compile.sh && rm -rf rust-project-esp32c3/target
+# RUN WOKWI_MCU=esp32-s2 ./compile.sh && rm -rf rust-project-esp32s2/target
+# RUN WOKWI_MCU=esp32-s3 ./compile.sh && rm -rf rust-project-esp32s3/target
 
 ENV HOME="/home/esp"
 ENV HEXI_SRC_DIR="/home/esp/build-in"
