@@ -16,9 +16,19 @@ jobs:
           - rust-nostd-esp
           - rust-std-esp
           - rust-training-esp32c3
+
+    env:
+      BUILDER_NAME: ${{ matrix.builder_name }}
+
     steps:
       - uses: actions/checkout@v3
       - name: Build container
         run: docker build -t "wokwi/builder-${BUILDER_NAME}" ${BUILDER_NAME}
-        env:
-          BUILDER_NAME: ${{ matrix.builder_name }}
+
+      - name: Test rust-std-esp container
+        if: matrix.builder_name == 'rust-std-esp'
+        run: |
+          docker run --rm -e WOKWI_MCU=esp32 "wokwi/builder-${BUILDER_NAME}" ./compile.sh 
+          docker run --rm -e WOKWI_MCU=esp32-c3 "wokwi/builder-${BUILDER_NAME}" ./compile.sh 
+          docker run --rm -e WOKWI_MCU=esp32-s2 "wokwi/builder-${BUILDER_NAME}" ./compile.sh 
+          docker run --rm -e WOKWI_MCU=esp32-s3 "wokwi/builder-${BUILDER_NAME}" ./compile.sh
