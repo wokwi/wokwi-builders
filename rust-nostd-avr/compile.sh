@@ -1,8 +1,5 @@
 #!/bin/bash
 
-export CARGO_INCREMENTAL=0
-export RUSTC_WRAPPER=$(which sccache)
-
 #ENV MCU="avr-atmega328p"
 echo $WOKWI_MCU
 case ${WOKWI_MCU} in

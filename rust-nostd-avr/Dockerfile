@@ -29,8 +29,7 @@ RUN cargo --version
 RUN rustup show
 
 # Install extra crates
-# it would be nice if we could get cargo-audit and sccache in some binary form :D this build step take's ages
-RUN cargo install cargo-audit cargo-generate sccache --locked
+RUN cargo install cargo-audit cargo-generate
 
 # Generate project templates
 RUN cargo generate -a Rahix/avr-hal-template --name rust-project-uno --vcs none --silent -d board="Arduino Uno"
