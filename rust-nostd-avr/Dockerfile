@@ -29,11 +29,7 @@ RUN cargo --version
 RUN rustup show
 
 # Install extra crates
-RUN cargo install cargo-audit && \
-    GENERATE_VERSION=$(git ls-remote --refs --sort="version:refname" --tags "https://github.com/cargo-generate/cargo-generate" | cut -d/ -f3- | tail -n1)  && \
-    curl -L "https://github.com/cargo-generate/cargo-generate/releases/latest/download/cargo-generate-${GENERATE_VERSION}-x86_64-unknown-linux-gnu.tar.gz" -o "${HOME}/.cargo/bin/cargo-generate.tar.gz" && \
-    tar xf "${HOME}/.cargo/bin/cargo-generate.tar.gz" -C ${HOME}/.cargo/bin && \
-    chmod u+x "${HOME}/.cargo/bin/cargo-generate"
+RUN cargo install cargo-audit cargo-generate
 
 # Generate project templates
 RUN cargo generate -a Rahix/avr-hal-template --name rust-project-uno --vcs none --silent -d board="Arduino Uno"
