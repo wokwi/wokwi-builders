@@ -33,7 +33,7 @@ fi
 
 if [ -f ${HOME}/build-in/Cargo.toml ]; then
     cp ${HOME}/build-in/Cargo.toml Cargo.toml
-    sed -i 's/^[[:space:]]*name[[:space:]]*=[[:space:]]*["'"'"']\([^"'"'"']*\)["'"'"']\([[:space:]]*\)$/\nname = "'${PROJECT_NAME_UNDERSCORE}'"/' Cargo.toml
+    rnamer -n ${PROJECT_NAME}
 fi
 
 cargo audit
