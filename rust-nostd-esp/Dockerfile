@@ -33,10 +33,6 @@ RUN WOKWI_MCU=esp32-c3 ./compile.sh && rm -rf rust-project-esp32c3/target
 RUN WOKWI_MCU=esp32-s2 ./compile.sh && rm -rf rust-project-esp32s2/target
 RUN WOKWI_MCU=esp32-s3 ./compile.sh && rm -rf rust-project-esp32s3/target
 
-COPY test.sh /home/esp/
-COPY Cargo.toml /home/esp/build-in/
-
-
 ENV HOME="/home/esp"
 ENV HEXI_SRC_DIR="/home/esp/build-in"
 ENV HEXI_SRC_FILES="*(*.rs|Cargo.toml)"
