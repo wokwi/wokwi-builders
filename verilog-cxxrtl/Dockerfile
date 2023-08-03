@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 RUN apt-get update
 RUN apt-get install -y git curl python3 xz-utils bzip2
 WORKDIR /opt
-RUN curl -L https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2022-09-26/oss-cad-suite-linux-x64-20220926.tgz | tar zxf -
+RUN curl -L https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2023-07-31/oss-cad-suite-linux-x64-20230731.tgz | tar zxf -
 RUN git clone --depth 1 https://github.com/emscripten-core/emsdk.git
 WORKDIR /opt/emsdk
 RUN ./emsdk install latest && ./emsdk activate latest
