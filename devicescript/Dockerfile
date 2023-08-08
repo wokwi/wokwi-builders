@@ -2,7 +2,7 @@ FROM node:18-alpine
 
 RUN adduser -h /app -D wokwi
 
-RUN npm i -g @devicescript/cli@2.14.0
+RUN npm i -g @devicescript/cli@2.14.14
 
 USER wokwi
 WORKDIR /app
