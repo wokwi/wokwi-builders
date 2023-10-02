@@ -15,5 +15,5 @@ if [ -f ${HOME}/build-in/imc42670p.rs ]; then
     cat ${HOME}/build-in/imc42670p.rs >src/imc42670p.rs
 fi
 cargo build --offline --release
-espflash save-image --chip esp32 --flash-size 4mb target/riscv32imc-esp-espidf/release/hardware-check ${HOME}/build-out/project.bin
+espflash save-image --chip esp32c3 --flash-size 4mb target/riscv32imc-esp-espidf/release/hardware-check ${HOME}/build-out/project.bin
 cp target/riscv32imc-esp-espidf/release/hardware-check ${HOME}/build-out/project.elf
