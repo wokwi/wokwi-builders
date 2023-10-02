@@ -1,4 +1,4 @@
-FROM espressif/idf-rust:all_1.71.0.1
+FROM espressif/idf-rust:all_1.72.0.0
 
 USER esp
 ENV USER=esp
@@ -22,7 +22,6 @@ RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-
 COPY compile.sh /home/esp/
 ADD assets /home/esp/assets
 RUN mkdir -p /home/esp/build-in /home/esp/build-out
-RUN pip3 install esptool
 
 # Prebuild the template project for all targets - currently disabled to reduce the image size.
 # We remove the target directory to reduce the image size.

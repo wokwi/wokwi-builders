@@ -1,4 +1,4 @@
-FROM espressif/idf-rust:all_1.71.0.1
+FROM espressif/idf-rust:all_1.72.0.0
 
 USER esp
 ENV USER=esp
@@ -24,7 +24,6 @@ RUN find . -name "config.toml" -type f -exec sed -i 's/build-std = \["core"\]/bu
 # Copy utility scripts and setup
 COPY compile.sh /home/esp/
 RUN mkdir -p /home/esp/build-in /home/esp/build-out
-RUN pip3 install esptool
 
 # Prebuild the template project for all targets, to test the container.
 # We remove the target directory to reduce the image size.

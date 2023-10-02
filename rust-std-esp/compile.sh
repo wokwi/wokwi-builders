@@ -26,6 +26,7 @@ esac
 cd ${PROJECT_NAME}
 mkdir -p output
 PROJECT_ROOT="${HOME}/${PROJECT_NAME}"
+WOKWI_MCU_NO_DASH="${WOKWI_MCU//-/}"
 
 if [ "$(find ${HOME}/build-in -name '*.rs')" ]; then
     cp ${HOME}/build-in/*.rs src
@@ -38,5 +39,5 @@ fi
 
 cargo audit
 cargo build --release --out-dir output -Z unstable-options
-python3 -m esptool --chip ${WOKWI_MCU} elf2image --flash_size 4MB ${PROJECT_ROOT}/output/${PROJECT_NAME} -o ${HOME}/build-out/project.bin
+espflash save-image --chip ${WOKWI_MCU_NO_DASH} --flash-size 4mb ${PROJECT_ROOT}/output/${PROJECT_NAME} ${HOME}/build-out/project.bin
 cp output/${PROJECT_NAME} ${HOME}/build-out/project.elf
