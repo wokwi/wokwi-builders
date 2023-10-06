@@ -14,9 +14,10 @@ RUN cargo install cargo-audit && \
 
 # Generate project templates
 RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32 -d mcu=esp32 -d advanced=false
+RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32c3 -d mcu=esp32c3 -d advanced=false
+RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32c6 -d mcu=esp32c6 -d advanced=false
 RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32s2 -d mcu=esp32s2 -d advanced=false
 RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32s3 -d mcu=esp32s3 -d advanced=false
-RUN cargo generate --vcs none esp-rs/esp-idf-template cargo --name rust-project-esp32c3 -d mcu=esp32c3 -d advanced=false
 
 # Copy utility scripts and setup
 COPY compile.sh /home/esp/
@@ -27,6 +28,7 @@ RUN mkdir -p /home/esp/build-in /home/esp/build-out
 # We remove the target directory to reduce the image size.
 # RUN WOKWI_MCU=esp32 ./compile.sh && rm -rf rust-project-esp32/target
 # RUN WOKWI_MCU=esp32-c3 ./compile.sh && rm -rf rust-project-esp32c3/target
+# RUN WOKWI_MCU=esp32-c6 ./compile.sh && rm -rf rust-project-esp32c6/target
 # RUN WOKWI_MCU=esp32-s2 ./compile.sh && rm -rf rust-project-esp32s2/target
 # RUN WOKWI_MCU=esp32-s3 ./compile.sh && rm -rf rust-project-esp32s3/target
 

@@ -11,6 +11,9 @@ case ${WOKWI_MCU} in
 "esp32-c3")
     PROJECT_NAME="rust-project-esp32c3"
     ;;
+"esp32-c6")
+    PROJECT_NAME="rust-project-esp32c6"
+    ;;
 "esp32-s2")
     PROJECT_NAME="rust-project-esp32s2"
     ;;
