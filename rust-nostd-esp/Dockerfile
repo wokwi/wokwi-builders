@@ -28,6 +28,8 @@ RUN mkdir -p /home/esp/build-in /home/esp/build-out
 
 # Prebuild the template project for all targets, to test the container.
 # We remove the target directory to reduce the image size.
+RUN sudo pkill rls cargo
+RUN rm -rf /home/esp/.cargo/registry/index/* /home/esp/.cargo/.package-cache
 RUN WOKWI_MCU=esp32 ./compile.sh && rm -rf rust-project-esp32/target
 RUN WOKWI_MCU=esp32-c3 ./compile.sh && rm -rf rust-project-esp32c3/target
 RUN WOKWI_MCU=esp32-c6 ./compile.sh && rm -rf rust-project-esp32c6/target
