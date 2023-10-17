@@ -39,6 +39,7 @@ if [ -f ${HOME}/build-in/Cargo.toml ]; then
     rnamer -n ${PROJECT_NAME}
 fi
 
+rm -rf ${HOME}/.cargo/registry/index/* ${HOME}/.cargo/.package-cache
 cargo clean
 cargo audit
 cargo build --release --out-dir output -Z unstable-options

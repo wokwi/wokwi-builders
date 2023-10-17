@@ -30,6 +30,7 @@ if [ -f ${HOME}/build-in/Cargo.toml ]; then
     sed -i 's/^[[:space:]]*name[[:space:]]*=[[:space:]]*["'"'"']\([^"'"'"']*\)["'"'"']\([[:space:]]*\)$/\nname = "'${PROJECT_NAME}'"/' Cargo.toml
 fi
 
+rm -rf ${HOME}/.cargo/registry/index/* ${HOME}/.cargo/.package-cache
 cargo clean
 cargo audit
 cargo build --release --out-dir output -Z unstable-options
