@@ -29,7 +29,7 @@ RUN cargo --version
 RUN rustup show
 
 # Install extra crates
-RUN cargo install cargo-audit cargo-generate
+RUN cargo install cargo-audit@0.17.6 cargo-generate
 
 # Generate project templates
 RUN cargo generate -a Rahix/avr-hal-template --name rust-project-uno --vcs none --silent -d board="Arduino Uno"

@@ -39,7 +39,7 @@ if [ -f ${HOME}/build-in/Cargo.toml ]; then
     rnamer -n ${PROJECT_NAME}
 fi
 
-cargo build --release --out-dir output -Z unstable-options
 cargo audit
+cargo build --release --out-dir output -Z unstable-options
 espflash save-image --chip ${WOKWI_MCU_NO_DASH} --flash-size 4mb ${PROJECT_ROOT}/output/${PROJECT_NAME} ${HOME}/build-out/project.bin
 cp output/${PROJECT_NAME} ${HOME}/build-out/project.elf
