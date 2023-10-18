@@ -30,12 +30,7 @@ if [ -f ${HOME}/build-in/Cargo.toml ]; then
     sed -i 's/^[[:space:]]*name[[:space:]]*=[[:space:]]*["'"'"']\([^"'"'"']*\)["'"'"']\([[:space:]]*\)$/\nname = "'${PROJECT_NAME}'"/' Cargo.toml
 fi
 
-rm -rf ~/.cargo/.package-cache
-echo "cargo clean"
-cargo clean
-echo "cargo audit"
-cargo audit
-echo "cargo build"
 cargo build --release --out-dir output -Z unstable-options
+cargo audit
 avr-objcopy -R .eeprom -O ihex ./target/${MCU}/release/${PROJECT_NAME}.elf ${HOME}/build-out/project.hex
 cp ./target/${MCU}/release/${PROJECT_NAME}.elf ${HOME}/build-out/project.elf
