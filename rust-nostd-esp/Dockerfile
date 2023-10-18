@@ -1,10 +1,10 @@
-FROM espressif/idf-rust:all_1.72.0.0
+FROM espressif/idf-rust:all_1.73.0.0
 
 USER esp
 ENV USER=esp
 
 # Install extra crates
-RUN cargo install cargo-audit && \
+RUN cargo install cargo-audit@0.17.6 && \
     GENERATE_VERSION=$(git ls-remote --refs --sort="version:refname" --tags "https://github.com/cargo-generate/cargo-generate" | cut -d/ -f3- | tail -n1)  && \
     curl -L "https://github.com/cargo-generate/cargo-generate/releases/latest/download/cargo-generate-${GENERATE_VERSION}-x86_64-unknown-linux-gnu.tar.gz" -o "${HOME}/.cargo/bin/cargo-generate.tar.gz" && \
     tar xf "${HOME}/.cargo/bin/cargo-generate.tar.gz" -C ${HOME}/.cargo/bin && \
