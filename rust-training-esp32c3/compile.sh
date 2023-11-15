@@ -35,7 +35,7 @@ if [ -f ${HOME}/build-in/Cargo.toml ]; then
         exit 1
         ;;
     esac
-    cd espressif-trainings/${PROJECT_PATH}
+    cd std-training/${PROJECT_PATH}
     cp ${HOME}/build-in/Cargo.toml Cargo.toml
 fi
 
