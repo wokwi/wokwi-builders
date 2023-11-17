@@ -2,6 +2,11 @@
 
 set -ef
 
+export IDF_PATH="/home/esp/.espressif/frameworks/esp-idf"
+export IDF_TOOLS_PATH=/home/esp/.espressif
+. /home/esp/.espressif/frameworks/esp-idf/export.sh
+export ESP_IDF_TOOLS_INSTALL_DIR=fromenv
+
 echo "Compiling $1"
 
 cd /home/esp/std-training/$1
@@ -17,5 +22,4 @@ if [ -f cfg.toml.example ]; then
     sed -i 's/mqtt_host = "yourpc.local"/mqtt_host = "host"/g' cfg.toml
 fi
 
-$HOME/.cargo/bin/cargo clean
 $HOME/.cargo/bin/cargo build --release
