@@ -9,6 +9,8 @@ case ${WOKWI_MCU} in
     ;;
 "esp32-c3")
     PROJECT_NAME="rust-project-esp32c3"
+    rm ${PROJECT_NAME}/.cargo/config.toml
+    cp ${HOME}/config.toml ${PROJECT_NAME}/.cargo/config.toml
     ;;
 "esp32-c6")
     PROJECT_NAME="rust-project-esp32c6"
