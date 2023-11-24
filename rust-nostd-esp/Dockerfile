@@ -25,6 +25,8 @@ RUN find . -name "config.toml" -type f -exec sed -i 's/build-std = \["core"\]/bu
 
 # Copy utility scripts and setup
 COPY compile.sh /home/esp/
+COPY config.toml /home/esp/
+
 RUN mkdir -p /home/esp/build-in /home/esp/build-out
 
 # Prebuild the template project for all targets, to test the container.
