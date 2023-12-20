@@ -49,7 +49,7 @@ if [ "$(find ${HOME}/build-in -name '*.h')" ]; then
    cp ${HOME}/build-in/*.h main/src
 fi
 
-idf.py build
+idf.py build 1>&2
 
 rm -f main/src/*
 
