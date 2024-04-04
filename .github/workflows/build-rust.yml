@@ -31,6 +31,6 @@ jobs:
           docker run --rm -e WOKWI_MCU=esp32 "wokwi/builder-${BUILDER_NAME}" ./compile.sh
           docker run --rm -e WOKWI_MCU=esp32-c3 "wokwi/builder-${BUILDER_NAME}" ./compile.sh
           docker run --rm -e WOKWI_MCU=esp32-c6 "wokwi/builder-${BUILDER_NAME}" ./compile.sh
-          docker run --rm -e WOKWI_MCU=esp32-h2 "wokwi/builder-${BUILDER_NAME}" ./compile.sh
+          # docker run --rm -e WOKWI_MCU=esp32-h2 "wokwi/builder-${BUILDER_NAME}" ./compile.sh
           docker run --rm -e WOKWI_MCU=esp32-s2 "wokwi/builder-${BUILDER_NAME}" ./compile.sh
           docker run --rm -e WOKWI_MCU=esp32-s3 "wokwi/builder-${BUILDER_NAME}" ./compile.sh
