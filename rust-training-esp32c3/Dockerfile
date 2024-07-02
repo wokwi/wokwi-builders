@@ -26,7 +26,6 @@ RUN WOKWI_MCU=esp32-c3 ./fetch.sh intro/http-client
 RUN WOKWI_MCU=esp32-c3 ./fetch.sh intro/http-server
 RUN WOKWI_MCU=esp32-c3 ./fetch.sh intro/mqtt/exercise
 
-
 ENV HEXI_SRC_DIR="/home/esp/build-in"
 ENV HEXI_SRC_FILES="*.rs"
 ENV HEXI_BUILD_CMD="bash /home/esp/compile.sh"
