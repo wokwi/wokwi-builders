@@ -19,6 +19,9 @@ case ${WOKWI_MCU} in
 "esp32-h2")
     MCU="esp32h2"
     ;;
+"esp32-p4")
+    MCU="esp32p4"
+    ;;
 "esp32-s2")
     MCU="esp32s2"
     ;;
