@@ -11,8 +11,6 @@ case ${WOKWI_MCU} in
 "esp32-c3")
     PROJECT_NAME="rust-project-esp32c3"
     TARGET="riscv32imc-unknown-none-elf"
-    rm ${PROJECT_NAME}/.cargo/config.toml
-    cp ${HOME}/config.toml ${PROJECT_NAME}/.cargo/config.toml
     ;;
 "esp32-c6")
     PROJECT_NAME="rust-project-esp32c6"
@@ -37,8 +35,6 @@ case ${WOKWI_MCU} in
 esac
 
 cd ${PROJECT_NAME}
-mkdir -p output
-PROJECT_ROOT="${HOME}/${PROJECT_NAME}"
 WOKWI_MCU_NO_DASH="${WOKWI_MCU//-/}"
 
 if [ "$(find ${HOME}/build-in -name '*.rs')" ]; then
@@ -52,5 +48,5 @@ fi
 
 cargo audit
 cargo build --release
-espflash save-image --chip ${WOKWI_MCU_NO_DASH} --flash-size 4mb target/${TARGET}/release/${PROJECT_NAME} ${HOME}/build-out/project.bin
-cp target/${TARGET}/release/${PROJECT_NAME} ${HOME}/build-out/project.elf
+espflash save-image --chip ${WOKWI_MCU_NO_DASH} --flash-size 4mb target/${TARGET}/release/main ${HOME}/build-out/project.bin
+cp target/${TARGET}/release/main ${HOME}/build-out/project.elf
