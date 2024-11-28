@@ -48,5 +48,5 @@ fi
 
 cargo audit
 cargo build --release
-espflash save-image --chip ${WOKWI_MCU_NO_DASH} --flash-size 4mb target/${TARGET}/release/main ${HOME}/build-out/project.bin
-cp target/${TARGET}/release/main ${HOME}/build-out/project.elf
+espflash save-image --chip ${WOKWI_MCU_NO_DASH} --flash-size 4mb target/${TARGET}/release/${PROJECT_NAME} ${HOME}/build-out/project.bin
+cp target/${TARGET}/release/${PROJECT_NAME} ${HOME}/build-out/project.elf
