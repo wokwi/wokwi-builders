@@ -4,7 +4,9 @@ USER esp
 ENV USER=esp
 
 # Install extra crates
-RUN cargo install cargo-audit && cargo install esp-generate && \
+RUN cargo install cargo-audit && \
+    # Using the git argument until a new version which contains https://github.com/esp-rs/esp-generate/pull/62 is released
+    cargo install esp-generate --git https://github.com/esp-rs/esp-generate && \
     curl -L "https://github.com/SergioGasquez/rnamer/releases/latest/download/rnamer-x86_64-unknown-linux-gnu" -o "${HOME}/.cargo/bin/rnamer" && \
     chmod u+x "${HOME}/.cargo/bin/rnamer"
 
