@@ -18,12 +18,8 @@ RUN esp-generate --headless --chip=esp32h2 rust-project-esp32h2
 RUN esp-generate --headless --chip=esp32s2 rust-project-esp32s2
 RUN esp-generate --headless --chip=esp32s3 rust-project-esp32s3
 
-# Add alloc to the build-std property
-RUN find . -name "config.toml" -type f -exec sed -i 's/build-std = \["core"\]/build-std = \["alloc", "core"\]/g' {} +
-
 # Copy utility scripts and setup
 COPY compile.sh /home/esp/
-COPY config.toml /home/esp/
 
 RUN mkdir -p /home/esp/build-in /home/esp/build-out
 
