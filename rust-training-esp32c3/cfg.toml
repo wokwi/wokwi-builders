@@ -1,6 +1,0 @@
-[hardware-check]
-wifi_ssid = "Wokwi-GUEST"
-wifi_psk = ""
-mqtt_user = ""
-mqtt_pass = ""
-mqtt_host = "broker.mqttdashboard.com"
