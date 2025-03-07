@@ -47,6 +47,7 @@ if [ -f ${HOME}/build-in/Cargo.toml ]; then
 fi
 
 cargo audit
+cargo update
 cargo build --release
 espflash save-image --chip ${WOKWI_MCU_NO_DASH} --flash-size 4mb target/${TARGET}/release/${PROJECT_NAME} ${HOME}/build-out/project.bin
 cp target/${TARGET}/release/${PROJECT_NAME} ${HOME}/build-out/project.elf
