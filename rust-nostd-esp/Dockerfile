@@ -11,12 +11,12 @@ RUN cargo install cargo-audit && \
     chmod u+x "${HOME}/.cargo/bin/rnamer"
 
 # Generate project templates
-RUN esp-generate --headless --chip=esp32 rust-project-esp32
-RUN esp-generate --headless --chip=esp32c3 rust-project-esp32c3
-RUN esp-generate --headless --chip=esp32c6 rust-project-esp32c6
-RUN esp-generate --headless --chip=esp32h2 rust-project-esp32h2
-RUN esp-generate --headless --chip=esp32s2 rust-project-esp32s2
-RUN esp-generate --headless --chip=esp32s3 rust-project-esp32s3
+RUN esp-generate --headless --chip=esp32 -o log rust-project-esp32
+RUN esp-generate --headless --chip=esp32c3 -o log rust-project-esp32c3
+RUN esp-generate --headless --chip=esp32c6 -o log rust-project-esp32c6
+RUN esp-generate --headless --chip=esp32h2 -o log rust-project-esp32h2
+RUN esp-generate --headless --chip=esp32s2 -o log rust-project-esp32s2
+RUN esp-generate --headless --chip=esp32s3 -o log rust-project-esp32s3
 
 # Copy utility scripts and setup
 COPY compile.sh /home/esp/
