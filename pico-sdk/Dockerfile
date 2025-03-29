@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM alpine:3.21
 
 # Install toolchain
 RUN apk update && \
@@ -11,13 +11,14 @@ RUN apk update && \
             libusb-dev \
             bsd-compat-headers \
             newlib-arm-none-eabi \
-            gcc-arm-none-eabi
+            gcc-arm-none-eabi \
+            g++-arm-none-eabi
 RUN adduser -D wokwi
 
 USER wokwi
 WORKDIR /home/wokwi
 ENV PICO_SDK_PATH=/home/wokwi/pico-sdk
-RUN git clone -b 1.4.0 --depth 1 https://github.com/raspberrypi/pico-sdk.git && cd pico-sdk && git submodule update --init --depth 1
+RUN git clone -b 2.1.1 --depth 1 https://github.com/raspberrypi/pico-sdk.git && cd pico-sdk && git submodule update --init --depth 1
 
 COPY --chown=wokwi:wokwi project project/
 
