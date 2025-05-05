@@ -22,6 +22,7 @@ target_link_libraries(
   hardware_interp
   hardware_pio
   hardware_pwm
+  hardware_rtc
   hardware_spi
 )
 
