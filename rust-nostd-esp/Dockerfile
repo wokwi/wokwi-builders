@@ -1,12 +1,11 @@
-FROM espressif/idf-rust:all_1.87.0.0
+FROM espressif/idf-rust:all_1.88.0.0
 
 USER esp
 ENV USER=esp
 
 # Install extra crates
 RUN cargo install cargo-audit && \
-    curl -L "https://github.com/esp-rs/esp-generate/releases/latest/download/esp-generate-x86_64-unknown-linux-gnu" -o "${HOME}/.cargo/bin/esp-generate" && \
-    chmod u+x "${HOME}/.cargo/bin/esp-generate" && \
+    cargo install esp-generate && \
     curl -L "https://github.com/SergioGasquez/rnamer/releases/latest/download/rnamer-x86_64-unknown-linux-gnu" -o "${HOME}/.cargo/bin/rnamer" && \
     chmod u+x "${HOME}/.cargo/bin/rnamer"
 
