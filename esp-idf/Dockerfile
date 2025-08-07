@@ -1,4 +1,4 @@
-FROM espressif/idf:v5.3.1
+FROM espressif/idf:v5.5
 
 RUN useradd -rm -d /home/wokwi wokwi
 USER wokwi
