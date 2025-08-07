@@ -55,6 +55,7 @@ fi
 idf.py build 1>&2
 
 rm -f main/src/*
+touch main/CMakeLists.txt # Force rescanning of sources under main/src
 
 cp ./build/wokwi-project.bin ${HOME}/build-out/project.bin
 cp ./build/wokwi-project.elf ${HOME}/build-out/project.elf
