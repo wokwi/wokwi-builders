@@ -6,7 +6,7 @@ WORKDIR /home/wokwi
 ENV USER=wokwi
 
 # Copy utility scripts and setup
-COPY compile.sh /home/wokwi/
+COPY compile.sh patch_ninja.py /home/wokwi/
 ADD project /home/wokwi/esp-project-template
 RUN mkdir -p /home/wokwi/build-in /home/wokwi/build-out
 

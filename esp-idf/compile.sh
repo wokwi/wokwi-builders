@@ -52,10 +52,19 @@ if [ "$(find ${HOME}/build-in -name '*.h')" ]; then
    cp ${HOME}/build-in/*.h main/src
 fi
 
+if [ -f "ninja.template" ]; then 
+    cp ninja.template build/build.ninja
+    python ~/patch_ninja.py -v main/src build/build.ninja
+fi
+
 idf.py build 1>&2
 
 rm -f main/src/*
-touch main/CMakeLists.txt # Force rescanning of sources under main/src
 
 cp ./build/wokwi-project.bin ${HOME}/build-out/project.bin
 cp ./build/wokwi-project.elf ${HOME}/build-out/project.elf
+
+if [ ! -f ninja.template ]; then 
+    echo "Creating ninja.template from build/build.ninja"
+    cp build/build.ninja ninja.template
+fi
