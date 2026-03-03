@@ -45,6 +45,10 @@ fi
 
 cd $PROJECT_ROOT
 
+# Clean main/src before copying new files to prevent ghost files
+# from previous builds (e.g. if a previous build failed before cleanup)
+rm -f main/src/*.c main/src/*.h
+
 if [ "$(find ${HOME}/build-in -name '*.c')" ]; then
    cp ${HOME}/build-in/*.c main/src
 fi
