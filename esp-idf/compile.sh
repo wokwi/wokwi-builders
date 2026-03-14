@@ -13,8 +13,14 @@ case ${WOKWI_MCU} in
 "esp32-c3")
     MCU="esp32c3"
     ;;
+"esp32-c5")
+    MCU="esp32c5"
+    ;;
 "esp32-c6")
     MCU="esp32c6"
+    ;;
+"esp32-c61")
+    MCU="esp32c61"
     ;;
 "esp32-h2")
     MCU="esp32h2"

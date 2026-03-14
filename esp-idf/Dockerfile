@@ -1,4 +1,4 @@
-FROM espressif/idf:v5.3.4
+FROM espressif/idf:v5.5.3
 
 RUN useradd -rm -d /home/wokwi wokwi
 USER wokwi
@@ -19,6 +19,8 @@ RUN WOKWI_MCU=esp32 ./compile.sh
 RUN WOKWI_MCU=esp32-s2 ./compile.sh
 RUN WOKWI_MCU=esp32-s3 ./compile.sh
 RUN WOKWI_MCU=esp32-c3 ./compile.sh
+RUN WOKWI_MCU=esp32-c5 ./compile.sh
 RUN WOKWI_MCU=esp32-c6 ./compile.sh
+RUN WOKWI_MCU=esp32-c61 ./compile.sh
 RUN WOKWI_MCU=esp32-h2 ./compile.sh
 RUN WOKWI_MCU=esp32-p4 ./compile.sh
