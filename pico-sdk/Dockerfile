@@ -10,6 +10,7 @@ RUN apk update && \
             build-base \
             libusb-dev \
             bsd-compat-headers \
+            linux-headers \
             newlib-arm-none-eabi \
             gcc-arm-none-eabi \
             g++-arm-none-eabi
