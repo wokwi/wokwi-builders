@@ -26,6 +26,10 @@ WORKDIR /home/wokwi/project/build_pico
 RUN cmake -DPICO_BOARD=pico .. && make -j4
 WORKDIR /home/wokwi/project/build_pico_w
 RUN cmake -DPICO_BOARD=pico_w .. && make -j4
+WORKDIR /home/wokwi/project/build_pico2
+RUN cmake -DPICO_BOARD=pico2 .. && make -j4
+WORKDIR /home/wokwi/project/build_pico2_w
+RUN cmake -DPICO_BOARD=pico2_w .. && make -j4
 
 WORKDIR /home/wokwi/project
 ADD compile.sh .

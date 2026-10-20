@@ -22,11 +22,14 @@ target_link_libraries(
   hardware_interp
   hardware_pio
   hardware_pwm
-  hardware_rtc
   hardware_spi
 )
 
-if (PICO_CYW43_SUPPORTED) # set by PICO_BOARD=pico_w
+if (PICO_RP2040) # RP2350 has no RTC peripheral
+  target_link_libraries(wokwi_project hardware_rtc)
+endif()
+
+if (PICO_CYW43_SUPPORTED) # set by PICO_BOARD=pico_w / pico2_w
   target_include_directories(wokwi_project PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
